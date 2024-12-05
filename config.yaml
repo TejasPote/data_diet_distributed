@@ -1,0 +1,15 @@
+device: "cuda"  # Choose between 'cuda' or 'cpu'
+sparse: true  # Whether to use sparse training
+sparsity: 0.7  # Sparsity level
+batch_size_scores: 100  # Batch size for scoring
+num_workers: 2  # Number of workers for data loading
+dataset: "cifar10"  # Dataset name
+batch_size: 128  # Batch size for training
+start_epoch: 1  # Starting epoch
+num_epochs: 20  # Number of epochs to train
+lr: 0.01  # Learning rate
+momentum: 0.9  # Momentum for optimizer
+weight_decay: 0.0005  # Weight decay for optimizer
+checkpoint_path: "./checkpoint"  # Path to save/load checkpoints
+sparse_checkpoint_path: "./sparse_checkpoint"  # Path to save sparse checkpoints
+

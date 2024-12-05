@@ -1,0 +1,5 @@
+__pycache__
+*.tar
+cifar-10-batches-py
+*.pth
+*.tar.gz
