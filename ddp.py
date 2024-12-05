@@ -7,7 +7,7 @@ import torch.optim as optim
 from torch.nn.parallel import DistributedDataParallel as DDP
 
 
-torch.utils.data.DistributedSampler:
+
 
 from torch.utils.data import DataLoader, DistributedSampler
 from torchvision import datasets, transforms
