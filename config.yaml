@@ -6,7 +6,7 @@ num_workers: 2  # Number of workers for data loading
 dataset: "cifar10"  # Dataset name
 batch_size: 128  # Batch size for training
 start_epoch: 1  # Starting epoch
-num_epochs: 20  # Number of epochs to train
+num_epochs: 198  # Number of epochs to train
 lr: 0.01  # Learning rate
 momentum: 0.9  # Momentum for optimizer
 weight_decay: 0.0005  # Weight decay for optimizer

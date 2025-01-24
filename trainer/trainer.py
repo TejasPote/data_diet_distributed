@@ -11,6 +11,7 @@ def train(epoch, net, optimizer,trainloader, device, criterion):
     total = 0
     
     for batch_idx, (idx, inputs, targets) in enumerate(trainloader):
+        
 
         inputs, targets = inputs.to(device), targets.to(device)
         optimizer.zero_grad()

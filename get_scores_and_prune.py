@@ -27,10 +27,10 @@ def sparse_loader(train_loader, train_samples, net, device, sparsity, batch_size
     train_subset = torch.utils.data.Subset(train_dense, indices)
 
     assert (len(train_subset) == samples)
-    # print(len(train_subset))
+    print(len(train_subset))
 
-    # sparse_train_loader = torch.utils.data.DataLoader(train_subset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
+    sparse_train_loader = torch.utils.data.DataLoader(train_subset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
 
-    return train_subset, samples
+    return sparse_train_loader, samples
 
 

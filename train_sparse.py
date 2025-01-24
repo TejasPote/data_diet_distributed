@@ -12,9 +12,9 @@ def main():
     start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 
     print('==> Preparing sparse data ...')
-    train_loader, test_loader = get_dataloader('cifar10', 128, 2)
+    train_loader, test_loader, num_samples = get_dataloader('cifar10', 128, 2)
     sparsity = 0.5
-    batch_size = 12
+    batch_size = 125
     num_workers = 2
 
 
@@ -23,10 +23,10 @@ def main():
     filepath = cwd + f"/checkpoint/ckpt_{19}.pth"
     ckpt = torch.load(filepath, weights_only = True)
     model.load_state_dict(ckpt['net'])
-   
+    model.to(device)
 
-    sparse_train_loader, sparse_test_loader = sparse_loader(train_loader, model, device, sparsity, batch_size, num_workers)
-   
+    sparse_train_loader, num_samples = sparse_loader(train_loader,num_samples, model, device, sparsity, batch_size, num_workers)
+    save_path = cwd + f"/sparse_checkpoint"
     # Model
     print('==> Building model..')
     net = ResNet18()
@@ -39,7 +39,7 @@ def main():
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
     for epoch in range(start_epoch, start_epoch+20):
         train(epoch, net, optimizer,sparse_train_loader, device, criterion)
-        test(epoch, net, sparse_test_loader, device, criterion)
+        test(epoch, net, test_loader, device, criterion, save_path)
         scheduler.step()
 
 if __name__ == "__main__":
